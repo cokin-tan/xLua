@@ -42,17 +42,6 @@ set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
 #begin add by cokin.tan
 
-#begin lua-memstream
-set (MEMSTREAM_SRC luamemstream/memstream.c)
-set_property(
-    SOURCE ${MEMSTREAM_SRC}
-    APPEND
-    PROPERTY COMPILE_DEFINITIONS
-    LUA_LIB
-)
-set (THIRDPART_SRC ${THIRDPART_SRC} ${MEMSTREAM_SRC})
-#end lua-memstream
-
 #begin lua-protobuf
 set (PROTOBUF_SRC lua-protobuf/pb.c)
 set_property(
@@ -128,6 +117,17 @@ else ()
 	#   ${LUA_SRC_PATH}/liolib.c ${LUA_SRC_PATH}/lmathlib.c ${LUA_SRC_PATH}/loslib.c ${LUA_SRC_PATH}/lstrlib.c ${LUA_SRC_PATH}/ltablib.c ${LUA_SRC_PATH}/linit.c
 	#   ${LUA_SRC_PATH}/lutf8lib.c ${LUA_SRC_PATH}/loadlib.c )
 endif ()
+
+#begin lua-memstream
+set (MEMSTREAM_SRC luamemstream/memstream.c)
+set_property(
+    SOURCE ${MEMSTREAM_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${MEMSTREAM_SRC})
+#end lua-memstream
 
 set ( LUA_SOCKET
     luasocket/auxiliar.c
